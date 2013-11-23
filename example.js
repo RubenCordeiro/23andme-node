@@ -1,21 +1,22 @@
 var g23 = require('./index.js');
 var utils = require('util');
+var fs = require('fs');
 
-var userToken = '38d33201e68e599db0ca32746ab3e43d';
+var userToken = '';
 var userId = 1;
 var shareStatuses = ['Owned Profile', 'Sharing Genomes', 'Public Match'];
 var introStatuses = ['Sent', 'Received', 'Accepted', 'Declined', 'Cancelled'];
-var profileId = 'e6912fdfd73c9a4a';
+var profileId = '';
 var linkId = '';
 var matchId = '';
 var timestamp = Date.now();
 var requestParams = {
   id: userId,
   token: userToken,
-  profileID: profileId,
-  featureID: 'music',
-  linkID: linkId || '',
-  matchID: matchId,
+  profileId: profileId,
+  featureId: 'music',
+  linkId: linkId || '',
+  matchId: matchId,
   locations: ['rs3094315'],
   filters: {
     limit: 10,
@@ -32,10 +33,24 @@ var requestParams = {
   unfiltered: true
 };
 
-var imageTest = require('fs').readFileSync('profile.jpg');
+var imagePath = ''; // This is the path to the image you want to upload.
+
+var imageTest = require('fs').readFileSync(imagePath);
 
 requestParams.image = imageTest;
 
+g23.postProfilePictures(requestParams, function (err, data) {
+  console.log(utils.inspect(err || data, false, null));
+});
+
 g23.getProfiles(requestParams, function (err, data) {
+  console.log(utils.inspect(err || data, false, null));
+});
+
+g23.getProfileNames(requestParams, function (err, data) {
+  console.log(utils.inspect(err || data, false, null));
+});
+
+g23.getTraits(requestParams, function (err, data) {
   console.log(utils.inspect(err || data, false, null));
 });

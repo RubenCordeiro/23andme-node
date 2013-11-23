@@ -1,6 +1,8 @@
 23andme-node
 ===
 
+Pull requests and suggestions welcome! 
+
 # Index
 
 * [Installation](#installation)
@@ -30,7 +32,21 @@ All methods return a callback with the signature `callback(error, data)`.
 
 All methods expect a `params` object with at least the user's authentication `token`.
 
-All methods for the same resource return the same `data` object regardless of HTTP verb.
+All methods return the same `data` object regardless of HTTP verb.
+
+Possible error messages:
+
+`invalid_request` - The request is missing a required parameter, or includes an unsupported or incorrect parameter.
+
+`invalid_client` - Client authentication failed (e.g. unknown client, no client credentials included, multiple client credentials included, or unsupported credentials type).
+
+`unauthorized_client` - The client is not authorized to request an authorization code using this method.
+
+`access_denied`	- The resource owner or authorization server denied the request.
+
+`invalid_scope` - The requested scope is invalid, unknown, or malformed.
+
+`unsupported_response_type` - The authorization server does not support obtaining an authorization code using this method.
 
 Official API [documentation](https://api.23andme.com/docs/reference/).
 
@@ -409,7 +425,10 @@ Official API [documentation](https://api.23andme.com/docs/reference/).
 
 ## postProfilePicture(params, callback(error, data))
 
-Not yet implemented.
+### params
+
+* `profileId`
+* `image` - A buffer.
 
 ## postPublish(params, callback(error, data))
 
@@ -529,4 +548,4 @@ Possible values for `relationshipCode`:
 
 # TODO
 
-* Implement postProfilePictures.
+* Tests

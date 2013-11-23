@@ -1,5 +1,6 @@
 var request = require('request'),
-    qs = require('querystring');
+    qs = require('querystring'),
+    fermata = require('fermata');
 
 var getHeader = function (token) {
   var header = {
@@ -9,15 +10,14 @@ var getHeader = function (token) {
   return header;
 };
 
-// var postHeader = function (token, size) {
-//   var header = {
-//     'Authorization': 'Bearer ' + token,
-//     'Content-Type': 'multipart/form-data',
-//     'Content-Length': size
-//   };
+var postHeader = function (token, size) {
+  var header = {
+    'Authorization': 'Bearer ' + token,
+    'Content-Type': 'multipart/form-data'
+  };
 
-//   return header;
-// };
+  return header;
+};
 
 var processAPIResponse = function (error, response, body) {
   var result = [null, null];
@@ -237,7 +237,10 @@ module.exports = {
     });    
   },
   postProfilePictures: function (params, callback) {
-    // TODO: don't know how to handle multipart POST requests.
+    fermata.json('https://api.23andme.com/1/profile_picture/' + params.profileId + '/').post(postHeader(params.token), 
+      {image: {data: params.image}}, function (error, response) {
+      callback(error, response);
+    });
   },
   postPublish: function (params, callback) {
     var requestParams = {
