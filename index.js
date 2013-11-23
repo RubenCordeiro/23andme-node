@@ -55,10 +55,10 @@ module.exports = {
     });
   },
   getProfileNames: function (params, callback) {
-    var profileID = params.profileID ? params.profileID + '/' : '';
+    var profileId = params.profileId ? params.profileId + '/' : '';
 
     var requestParams = {
-      url: 'https://api.23andme.com/1/names/' + profileID,
+      url: 'https://api.23andme.com/1/names/' + profileId,
       headers: getHeader(params.token),
       method: 'GET'
     };
@@ -69,10 +69,10 @@ module.exports = {
     });
   },
   getProfilePictures: function (params, callback) {
-    var profileID = params.profileID ? params.profileID + '/' : '';
+    var profileId = params.profileId ? params.profileId + '/' : '';
 
     var requestParams = {
-      url: 'https://api.23andme.com/1/profile_picture/' + profileID,
+      url: 'https://api.23andme.com/1/profile_picture/' + profileId,
       headers: getHeader(params.token),
       method: 'GET'
     };
@@ -83,12 +83,12 @@ module.exports = {
     });
   },
   getPublished: function (params, callback) {
-    var profileID = params.profileID;
-    var featureID = params.featureID;
-    var linkID = params.linkID ? params.linkID + '/' : '';
+    var profileId = params.profileId;
+    var featureId = params.featureId;
+    var linkId = params.linkId ? params.linkId + '/' : '';
 
     var requestParams = {
-      url: 'https://api.23andme.com/1/publish/' + profileID + '/' + featureID + '/' + linkID,
+      url: 'https://api.23andme.com/1/publish/' + profileId + '/' + featureId + '/' + linkId,
       headers: getHeader(params.token),
       method: 'GET'
     };
@@ -99,11 +99,11 @@ module.exports = {
     });
   },
   getIntroduction: function (params, callback) {
-    var profileID = params.profileID;
-    var matchID = params.matchID;
+    var profileId = params.profileId;
+    var matchId = params.matchId;
 
     var requestParams = {
-      url: 'https://api.23andme.com/1/introduction/' + profileID + '/' + matchID + '/',
+      url: 'https://api.23andme.com/1/introduction/' + profileId + '/' + matchId + '/',
       headers: getHeader(params.token),
       method: 'GET'
     };
@@ -116,7 +116,7 @@ module.exports = {
   getGenotypes: function (params, callback) {
     var unfiltered = params.unfiltered ? '&unfiltered=true' : '';
     var requestParams = {
-      url: 'https://api.23andme.com/1/genotypes/' + params.profileID + '/?locations=' + encodeURIComponent(params.locations.join(' ')) + unfiltered,
+      url: 'https://api.23andme.com/1/genotypes/' + params.profileId + '/?locations=' + encodeURIComponent(params.locations.join(' ')) + unfiltered,
       headers: getHeader(params.token),
       method: 'GET'
     };
@@ -129,7 +129,7 @@ module.exports = {
   getGenomes: function (params, callback) {
     var unfiltered = params.unfiltered ? '?unfiltered=true' : '';
     var requestParams = {
-      url: 'https://api.23andme.com/1/genomes/' + params.profileID + '/' + unfiltered,
+      url: 'https://api.23andme.com/1/genomes/' + params.profileId + '/' + unfiltered,
       headers: getHeader(params.token),
       method: 'GET'
     };
@@ -141,7 +141,7 @@ module.exports = {
   },
   getHaplogroups: function (params, callback) {
     var requestParams = {
-      url: 'https://api.23andme.com/1/haplogroups/' + params.profileID + '/',
+      url: 'https://api.23andme.com/1/haplogroups/' + params.profileId + '/',
       headers: getHeader(params.token),
       method: 'GET'
     };
@@ -154,7 +154,7 @@ module.exports = {
   getAncestry: function (params, callback) {
     var threshold = params.threshold ? params.threshold + '/' : '';
     var requestParams = {
-      url: 'https://api.23andme.com/1/ancestry/' + params.profileID + '/?threshold=' + params.threshold,
+      url: 'https://api.23andme.com/1/ancestry/' + params.profileId + '/?threshold=' + params.threshold,
       headers: getHeader(params.token),
       method: 'GET'
     };
@@ -166,7 +166,7 @@ module.exports = {
   },
   getNeanderthal: function (params, callback) {
     var requestParams = {
-      url: 'https://api.23andme.com/1/neanderthal/' + params.profileID + '/',
+      url: 'https://api.23andme.com/1/neanderthal/' + params.profileId + '/',
       headers: getHeader(params.token),
       method: 'GET'
     };
@@ -178,7 +178,7 @@ module.exports = {
   },
   getRelatives: function (params, callback) {
     var requestParams = {
-      url: 'https://api.23andme.com/1/relatives/' + params.profileID + '/?' + qs.stringify(params.filters),
+      url: 'https://api.23andme.com/1/relatives/' + params.profileId + '/?' + qs.stringify(params.filters),
       headers: getHeader(params.token),
       method: 'GET'
     };
@@ -190,7 +190,7 @@ module.exports = {
   },
   getRisks: function (params, callback) {
     var requestParams = {
-      url: 'https://api.23andme.com/1/risks/' + params.profileID + '/',
+      url: 'https://api.23andme.com/1/risks/' + params.profileId + '/',
       headers: getHeader(params.token),
       method: 'GET'
     };
@@ -202,7 +202,7 @@ module.exports = {
   },
   getCarriers: function (params, callback) {
     var requestParams = {
-      url: 'https://api.23andme.com/1/carriers/' + params.profileID + '/',
+      url: 'https://api.23andme.com/1/carriers/' + params.profileId + '/',
       headers: getHeader(params.token),
       method: 'GET'
     };
@@ -214,7 +214,7 @@ module.exports = {
   },
   getDrugResponses: function (params, callback) {
     var requestParams = {
-      url: 'https://api.23andme.com/1/drug_responses/' + params.profileID + '/',
+      url: 'https://api.23andme.com/1/drug_responses/' + params.profileId + '/',
       headers: getHeader(params.token),
       method: 'GET'
     };
@@ -226,7 +226,7 @@ module.exports = {
   },
   getTraits: function (params, callback) {
     var requestParams = {
-      url: 'https://api.23andme.com/1/traits/' + params.profileID + '/',
+      url: 'https://api.23andme.com/1/traits/' + params.profileId + '/',
       headers: getHeader(params.token),
       method: 'GET'
     };
@@ -241,7 +241,7 @@ module.exports = {
   },
   postPublish: function (params, callback) {
     var requestParams = {
-      url: 'https://api.23andme.com/1/publish/' + params.profileID + '/' + params.featureID + '/',
+      url: 'https://api.23andme.com/1/publish/' + params.profileId + '/' + params.featureId + '/',
       headers: getHeader(params.token),
       method: 'POST'
     };
@@ -253,7 +253,7 @@ module.exports = {
   },
   postIntroduction: function (params, callback) {
     var requestParams = {
-      url: 'https://api.23andme.com/1/introduction/' + params.profileID + '/' + params.matchID + '/',
+      url: 'https://api.23andme.com/1/introduction/' + params.profileId + '/' + params.matchId + '/',
       headers: getHeader(params.token),
       method: 'POST'
     };
@@ -275,7 +275,7 @@ module.exports = {
   },
   putPublish: function (params, callback) {
     var requestParams = {
-      url: 'https://api.23andme.com/1/publish/' + params.profileID + '/' + params.featureID + '/' + params.linkID + '/?status=' + params.status,
+      url: 'https://api.23andme.com/1/publish/' + params.profileId + '/' + params.featureId + '/' + params.linkId + '/?status=' + params.status,
       headers: getHeader(params.token),
       method: 'PUT'
     };
@@ -287,7 +287,7 @@ module.exports = {
   },
   patchIntroduction: function (params, callback) {
     var requestParams = {
-      url: 'https://api.23andme.com/1/introduction/' + params.profileID + '/' + params.matchID + '/',
+      url: 'https://api.23andme.com/1/introduction/' + params.profileId + '/' + params.matchId + '/',
       headers: getHeader(params.token),
       method: 'PATCH'
     };
@@ -319,7 +319,7 @@ module.exports = {
       optionalData += '?' + qs.stringify(tempQuery);
 
     var requestParams = {
-      url: 'https://api.23andme.com/1/relatives/' + params.profileID + '/' + params.matchID + '/' + optionalData,
+      url: 'https://api.23andme.com/1/relatives/' + params.profileId + '/' + params.matchId + '/' + optionalData,
       headers: getHeader(params.token),
       method: 'PATCH'
     };
