@@ -30,7 +30,7 @@ All methods return a callback with the signature `callback(error, data)`.
 
 All methods expect a `params` object with at least the user's authentication `token`.
 
-All methods return the same `data` object regardless of HTTP verb.
+All methods for the same resource return the same `data` object regardless of HTTP verb.
 
 Official API [documentation](https://api.23andme.com/docs/reference/).
 
